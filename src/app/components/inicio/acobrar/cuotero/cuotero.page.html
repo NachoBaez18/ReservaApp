@@ -1,0 +1,62 @@
+<app-header-modal titulo = "Cuotero"></app-header-modal>
+<ion-content padding>
+  <h3 class="ancho">Detalle Cuotas de {{nombre}}</h3>
+
+  <ion-list>
+      
+    <ion-item-sliding *ngFor=" let lista of detalle">
+      <ion-item (click)="detalles(lista)">
+        <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning">{{nombre}}</ion-label>
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger">{{nombre}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0" >{{nombre}}</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning" class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger" class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0"  class="labelCenter">{{lista.cuota_numero}}/{{n_cuota}}</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" color="warning" class="label">{{lista.mora | number}}</ion-label>
+              <ion-label *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="danger" class="label">{{lista.monto + lista.mora | number}}</ion-label>
+              <ion-label *ngIf="lista.mora === 0"  class="label">{{lista.monto | number}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>       
+      </ion-item>
+      <ion-item-options side="start" >
+        <ion-item-option color="secondary" (click)="pagadoTotal(lista)">
+          <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+        </ion-item-option >
+        <ion-item-option *ngIf="lista.mora > 0 && lista.cancelado ==='N'" color="success" (click)="pagadoParcial(lista)">
+          <ion-icon slot="icon-only" name="checkmark-done-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options *ngIf="x" side="end" >
+        <ion-item-option color="danger" (click)="noPagado(lista)">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="warning" (click)="salteado(lista)">
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options *ngIf="lista.mora > 0 && lista.cancelado ==='S' && lista.moraCancelado ==='N'" side="end" >
+        <ion-item-option color="warning" (click)="pagoParcialMora(lista)">
+          <ion-icon name="pencil-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    <br>
+    <ion-button  (click)="CambiarFecha()" class="ancho"  expand="block" color="secondary" >Cambiar Fecha Vencimiento</ion-button>
+    
+
+    </ion-list>
+
+
+
+
+
+</ion-content>
