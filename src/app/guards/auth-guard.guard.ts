@@ -14,6 +14,5 @@ export class AuthGuardGuard implements CanActivate {
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.servicioUsuario.validarToken();
   }
-
-  
+ 
 }

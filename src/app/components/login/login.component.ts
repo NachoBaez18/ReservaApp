@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
  async ingresar(){
+ 
     const response: any = await this.usuarioService.iniciarSession(this.form.value);
     if (response.success) {
-      
     this.loadService.presentLoading('');
     setTimeout(()=>{
-      this.router.navigate(['inicio/cliente']);
+      this.router.navigate(['inicio/listaHorarios']);
     },1000);
 
     } else {

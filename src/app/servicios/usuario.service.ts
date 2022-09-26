@@ -28,9 +28,9 @@ export class UsuarioService {
     this.http.post(`${API}/user/login`, usuario, { headers })
       .subscribe(
         async (response: any) => {
-          if (response.success) {
+          if (!response.error) {
             // se guarda el token en el Storage
-            await this.guardarToken(response.data);
+            await this.guardarToken(response);
             // se manda el usuario mediante el emmiter
             this.loginEmitter.emit(this.usuario);
             // se retorna true
@@ -46,10 +46,14 @@ export class UsuarioService {
    });
   }
   
-  async guardarToken(token: string) {
-    this.token = token;
-    await localStorage.setItem('user-admin-token', token);
-    await this.validarToken();
+  async guardarToken(data:any) {
+    this.token =data.access_token;
+    let user = data.user;
+    await localStorage.setItem('user-admin-token', data.access_token);
+    await localStorage.setItem('user_name',user.name);
+    await localStorage.setItem('user_tipo',user.tipo_usuario);
+    await localStorage.setItem('id',user.id);
+    //await this.validarToken();
   }
 
   async validarToken(): Promise<boolean> {
@@ -88,6 +92,9 @@ export class UsuarioService {
     this.token = null;
     this.usuario = null;
     localStorage.removeItem('user-admin-token');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_tipo');
+    localStorage.removeItem('id');
     this.logoutEmitter.emit(true);
     
   }

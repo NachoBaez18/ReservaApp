@@ -16,8 +16,8 @@ import { RegistroPageModule } from './cliente/registro/registro.module';
 import { ACobrarComponent } from './acobrar/acobrar.component';
 import { ArqueoComponent } from './arqueo/arqueo.component';
 import { AcobaraAdelantadoComponent } from './acobara-adelantado/acobara-adelantado.component';
-
-
+import { ListaHorariosComponent } from './lista-horarios/lista-horarios.component';
+import { ServiciosListaComponent } from './servicios-lista/servicios-lista.component';
 
 @NgModule({
   entryComponents:[
@@ -42,6 +42,8 @@ import { AcobaraAdelantadoComponent } from './acobara-adelantado/acobara-adelant
     ACobrarComponent,
     AcobaraAdelantadoComponent,
     ArqueoComponent,
+    ListaHorariosComponent,
+    ServiciosListaComponent
   
 
   ]

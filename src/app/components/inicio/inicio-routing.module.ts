@@ -6,7 +6,9 @@ import { ArqueoComponent } from './arqueo/arqueo.component';
 import { ClienteComponent } from './cliente/cliente.component';
 
 import { InicioPage } from './inicio.page';
+import { ListaHorariosComponent } from './lista-horarios/lista-horarios.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { ServiciosListaComponent } from './servicios-lista/servicios-lista.component';
 
 const routes: Routes = [
   {path:'', component:InicioPage,children:[
@@ -15,6 +17,8 @@ const routes: Routes = [
     {path:'aCobrar',component:ACobrarComponent},
     {path:'arqueo',component:ArqueoComponent},
     {path:'aCobrarAdelantado',component:AcobaraAdelantadoComponent},
+    {path:'listaHorarios',component:ListaHorariosComponent},
+    {path:'listaServicios',component:ServiciosListaComponent},
   ]},
   {
     path: 'registro',
@@ -47,6 +51,14 @@ const routes: Routes = [
   {
     path: 'fecha-edit',
     loadChildren: () => import('./acobrar/fecha-edit/fecha-edit.module').then( m => m.FechaEditPageModule)
+  },
+  {
+    path: 'horario-registro',
+    loadChildren: () => import('./lista-horarios/horario-registro/horario-registro.module').then( m => m.HorarioRegistroPageModule)
+  },
+  {
+    path: 'registro-servicio',
+    loadChildren: () => import('./servicios-lista/registro-servicio/registro-servicio.module').then( m => m.RegistroServicioPageModule)
   },
 ];
 

@@ -1,0 +1,33 @@
+<app-header-modal titulo = "Registro Horarios"></app-header-modal>
+<ion-content padding>
+  
+    <h3 class="ancho">Registrar</h3>
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+            <ion-item class="ancho">
+              <ion-label position="floating">Fecha Inicio</ion-label>
+              <ion-datetime  required
+              displayFormat="YYYY MM DD HH:mm" placeholder="Seleccione la fecha"
+              [(ngModel)]="fecha_inicio" [ngModelOptions]="{standalone: true}" cancelText="Cancelar" doneText="Aceptar"></ion-datetime>   
+            </ion-item>
+
+            <ion-item class="ancho">
+              <ion-label position="floating">Fecha Final</ion-label>
+              <ion-datetime  required
+              displayFormat="YYYY MM DD HH:mm" placeholder="Seleccione la fecha"
+              [(ngModel)]="fecha_fin" [ngModelOptions]="{standalone: true}" cancelText="Cancelar" doneText="Aceptar"></ion-datetime>   
+            </ion-item>
+  
+            <ion-item class="ancho">
+              <ion-label position="floating">Minutos</ion-label>
+              <ion-input  type="number" autocomplete="off" 
+              formControlName="minutos"
+               ></ion-input>
+            </ion-item>
+            
+            <br>
+            <ion-button  type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid"  >Registrar</ion-button>
+            
+        </form>
+  
+  </ion-content>
+  

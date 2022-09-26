@@ -1,0 +1,27 @@
+<app-header-modal titulo = "Registro Horarios"></app-header-modal>
+<ion-content padding>
+  
+    <h3 class="ancho">Registrar</h3>
+      <form [formGroup]="form" (ngSubmit)="guardar()">    
+            <ion-item class="ancho">
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input  type="text" autocomplete="off" 
+              formControlName="nombre"
+               ></ion-input>
+            </ion-item>
+
+            <ion-item class="ancho">
+              <ion-label position="floating">Precio</ion-label>
+              <ion-input  type="number" autocomplete="off" 
+              formControlName="precio"
+               ></ion-input>
+            </ion-item>
+            
+            <br>
+            <ion-button  type="submit" class="ancho"  expand="block" color="secondary" [disabled]="form.invalid"  >Registrar</ion-button>
+            
+        </form>
+  
+  </ion-content>
+  
+
